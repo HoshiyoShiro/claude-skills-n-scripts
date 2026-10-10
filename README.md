@@ -8,7 +8,7 @@ A portable pack of Claude agent **skills** and **agents** that work on any codeb
 pack/.claude/
   project-profile.md        the one file you fill in per project
   skills/                   14 skills (one folder each, SKILL.md inside)
-  agents/                   master, software-engineer, bug-hunter, qa-tester
+  agents/                   master, software-engineer, bug-hunter, qa-tester, naive-user
 docs/
   INSTRUCTIONS.md           install, set up, adapt, troubleshoot
   SKILLS.md                 overview of the 14 skills

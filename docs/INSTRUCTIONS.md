@@ -8,7 +8,7 @@ How to reuse the skills pack and agents pack in another project, or on another m
 |---|---|
 | `pack/.claude/project-profile.md` | The one file you fill in per project |
 | `pack/.claude/skills/` | 14 skills: mockup-analyzer, known-issues, feature-enhancer, bug-finder, business-rules, checkin-merge, test-on-dev, browser-qa (+ handover template), browser-dev, browser-bug, db-access (+ helper script and example config), module-qa, work-log |
-| `pack/.claude/agents/` | 4 agents: master (orchestrator), software-engineer, bug-hunter, qa-tester |
+| `pack/.claude/agents/` | 5 agents: master (orchestrator), software-engineer, bug-hunter, qa-tester, naive-user |
 | `install_skills.py` | Copies the pack into a project folder (Python 3, no dependencies) |
 | `docs/SKILLS.md`, `docs/AGENTS.md` | Overview tables for the skills and the agents |
 | `docs/INSTRUCTIONS.md` | This file |
