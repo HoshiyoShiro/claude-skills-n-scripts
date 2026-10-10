@@ -7,12 +7,12 @@ A portable pack of Claude agent **skills** and **agents** that work on any codeb
 ```
 pack/.claude/
   project-profile.md        the one file you fill in per project
-  skills/                   14 skills (one folder each, SKILL.md inside)
+  skills/                   13 skills (one folder each, SKILL.md inside)
   agents/                   master, software-engineer, bug-hunter, qa-tester, naive-user
 docs/
   INSTRUCTIONS.md           install, set up, adapt, troubleshoot
-  SKILLS.md                 overview of the 14 skills
-  AGENTS.md                 overview of the 4 agents
+  SKILLS.md                 overview of the 13 skills
+  AGENTS.md                 overview of the 5 agents
 install_skills.py           copies the pack into a project
 ```
 
