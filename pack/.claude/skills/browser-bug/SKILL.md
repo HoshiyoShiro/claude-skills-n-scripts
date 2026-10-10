@@ -5,7 +5,7 @@ description: Check in a real browser whether a reported bug is actually fixed. U
 
 # Browser bug: is it really fixed?
 
-A fix is only done when the original failure no longer happens, nothing near it broke, and the evidence is on record. Use the same browser setup, safety and data rules as `browser-qa`; this file covers what differs.
+A fix is only done when the original failure no longer happens, nothing near it broke, and the evidence is on record. Use `browser-setup` and the safety and data rules of `browser-qa`; this file covers what differs.
 
 ## Rules
 - **The report defines fixed.** The symptom, exact steps and expected behavior come from the bug report, not from the fix. Different behavior that looks fine is not a pass unless it matches the expected result.
@@ -30,7 +30,7 @@ Get the report (a handover file, a ticket, pasted text or the user's description
 Note what must be in place for the fix to show: the build or branch, database scripts that must be applied, services that must run. A fix waiting on a script is not fixed.
 
 ## 2. Prepare
-Bring up the stack fresh with `test-on-dev`; confirm the branch and the fix are in the running build, not an older one. For a database fix, confirm the script is applied in the environment under test with `db-access` (read-only: `compare`, `params`, `columns`); report any gap; running a script is a separate decision that needs the user's go-ahead. Apply the `browser-qa` tooling setup. Use the project's simulation skill when the steps need an end user.
+Bring up the stack fresh with `test-on-dev`; confirm the branch and the fix are in the running build, not an older one. For a database fix, confirm the script is applied in the environment under test with `db-access` (read-only: `compare`, `params`, `columns`); report any gap; running a script is a separate decision that needs the user's go-ahead. Apply `browser-setup`. Use the project's simulation skill when the steps need an end user.
 
 ## 3. Verify each bug
 1. **Original steps, exactly as reported,** same role and data. Capture the result.

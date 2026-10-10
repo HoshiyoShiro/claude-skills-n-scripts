@@ -5,7 +5,7 @@ description: Check in a real browser that a newly added feature meets its requir
 
 # Browser dev: does the feature meet its requirements?
 
-`browser-qa` runs a list of test cases. This skill starts from the **requirements** and checks each one in the browser, so the question is the feature right is traceable. Use the same browser setup, safety and data rules as `browser-qa`; this file covers what differs.
+`browser-qa` runs a list of test cases. This skill starts from the **requirements** and checks each one in the browser, so the question is the feature right is traceable. Use `browser-setup` and the safety and data rules of `browser-qa`; this file covers what differs.
 
 ## Rules
 - **The requirements are the spec.** Judge the feature against them, not against what the code happens to do. A requirement the build does differently is `not met`.
@@ -20,7 +20,7 @@ From whatever exists, and show the list back in a few lines before testing: the 
 Turn each into a **numbered requirement** (`REQ-1`, `REQ-2`, and so on): one testable statement with its source. Split compound statements; keep the author's words; mark what is in scope for this build. If the handover has test cases, keep their ids next to the requirement they cover. Ask only for what is missing: roles, test data, environment, whether real outbound messages are allowed.
 
 ## 2. Prepare
-Bring up the stack fresh with `test-on-dev` and confirm the checked-out branch holds the feature. Apply the `browser-qa` tooling setup. For cases needing a simulated end user, use the project's simulation skill (profile). Check database-backed requirements (what is saved, scoping) read-only with `db-access`.
+Bring up the stack fresh with `test-on-dev` and confirm the checked-out branch holds the feature. Apply `browser-setup`. For cases needing a simulated end user, use the project's simulation skill (profile). Check database-backed requirements (what is saved, scoping) read-only with `db-access`.
 
 ## 3. Check each requirement
 For every requirement, in order:

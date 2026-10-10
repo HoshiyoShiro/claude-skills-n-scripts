@@ -58,6 +58,13 @@ Per skill, also record:
 - **module-qa:** the module, the Q&A file path, entry counts per audience and per check type.
 - **mockup-analyzer:** the screen analysed, gaps and questions raised.
 - **known-issues / business-rules:** entries added, updated or matched.
+- **naive-user:** persona, goals, outcomes, ease score, trend, report path.
+- **persona-library / user-goals:** the persona chosen or written, the goals produced.
+- **first-impression-test:** screens tested, label match rate, main findings.
+- **ux-heuristics:** counts per severity and the ease score.
+- **copy-and-error-review:** strings reviewed, findings by severity, term conflicts.
+- **accessibility-lens / mobile-user:** goals run, barriers by severity, limits stated.
+- **friction-trends:** build, verdict, counts of fixed, new, open and returned findings.
 
 Never put passwords, tokens, connection strings or secrets in a log, and no personal data; use ids and test names.
 

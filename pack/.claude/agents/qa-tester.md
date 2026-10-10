@@ -4,6 +4,7 @@ description: Tests in a real browser on the local dev stack and returns pass/fai
 tools: Read, Grep, Glob, Bash, Write
 skills:
   - test-on-dev
+  - browser-setup
   - browser-qa
   - browser-dev
   - browser-bug

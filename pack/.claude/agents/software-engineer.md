@@ -20,4 +20,6 @@ Workflow:
 5. For UI work follow the project's design-system skill if one exists; otherwise match the existing components and styles.
 6. Keep changes inside your own module; prefer new objects over editing shared ones. If shared code, a shared procedure or table, or an API contract must change, say exactly what and why in the plan and stop for approval. Return the plan for approval first if the change touches database schema, breaks an API, or spans 10 or more files. Do not proceed past the plan in that case.
 
+If you are given a UX report from naive-user, treat each Blocker and Major finding as a requirement: fix the wording, flow or layout the person struggled with, and use the report's plain-language suggestions as intent, not as exact specs. Use `copy-and-error-review` output for wording.
+
 Do not commit or push. Do not run browser tests; that is qa-tester. Report: files changed, what to test, open questions.

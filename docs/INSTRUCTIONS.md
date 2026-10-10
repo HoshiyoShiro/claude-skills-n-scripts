@@ -7,9 +7,10 @@ How to reuse the skills pack and agents pack in another project, or on another m
 | Path | What it is |
 |---|---|
 | `pack/.claude/project-profile.md` | The one file you fill in per project |
-| `pack/.claude/skills/` | 14 skills: mockup-analyzer, known-issues, feature-enhancer, bug-finder, business-rules, checkin-merge, test-on-dev, browser-qa (+ handover template), browser-dev, browser-bug, db-access (+ helper script and example config), module-qa, work-log |
+| `pack/.claude/skills/` | 22 skills, grouped in `SKILLS.md`: build and fix, test (including the shared `browser-setup`), usability (persona-library, user-goals, first-impression-test, ux-heuristics, copy-and-error-review, accessibility-lens, mobile-user, friction-trends), knowledge (module-qa, work-log) |
 | `pack/.claude/agents/` | 5 agents: master (orchestrator), software-engineer, bug-hunter, qa-tester, naive-user |
-| `install_skills.py` | Copies the pack into a project folder (Python 3, no dependencies) |
+| `install_skills.py` | Copies the pack into a project folder (Python 3, no dependencies); warns about skills that are mentioned but not installed |
+| `validate_pack.py` | Checks frontmatter, agent skill lists and skill references before you release a change |
 | `docs/SKILLS.md`, `docs/AGENTS.md` | Overview tables for the skills and the agents |
 | `docs/INSTRUCTIONS.md` | This file |
 
@@ -44,12 +45,14 @@ Other tools: the skills are plain markdown with a short frontmatter, so they als
    - database rules (script folder, naming, required patterns)
    - paths for the register, known issues, Q&A and logs (the defaults work)
    - how end users can be simulated, if at all
+   - the intended purpose in one sentence (used only after a first-impression test is written down)
 2. **Database access (only if you use `db-access`).** In `.claude/skills/db-access/`, copy `environments.example.conf` to `environments.local.conf` and fill in each environment. It is git-ignored. Use write policy `allowed` for local dev, `confirm` for shared environments, `never` for production.
 3. **Test accounts (only if you use the browser skills).** Create `.claude/skills/browser-qa/accounts.local.json` in the format shown in the browser-qa skill. It is git-ignored. Use test accounts only.
 4. **Business rules.** Delete the example entry in `.claude/skills/business-rules/business-rules.md` once you add a real one, and set an area prefix for rule ids.
-5. **Known issues.** Create `known-issues.md` in the repository root (the known-issues skill creates it on first use if it is missing).
-6. **Restart the assistant session** so it loads the new skills and agents.
-7. **Check it works:** ask it to run `db-access` with `whoami` on dev, and `test-on-dev` to start the stack. Fix the profile if either fails.
+5. **Personas (optional).** Write your real audience into `docs/personas.md` using the card in `persona-library`; the built-in personas fill any gaps. `docs/ux-history/` is created by `friction-trends` on the first run.
+6. **Known issues.** Create `known-issues.md` in the repository root (the known-issues skill creates it on first use if it is missing).
+7. **Restart the assistant session** so it loads the new skills and agents.
+8. **Check it works:** ask it to run `db-access` with `whoami` on dev, and `test-on-dev` to start the stack. Fix the profile if either fails.
 
 ## 4. Using it
 
@@ -64,6 +67,10 @@ Skills trigger on plain requests. Typical phrases:
 | browser qa, here is the test document | browser-qa (qa-tester) |
 | check the feature against the requirements | browser-dev (qa-tester) |
 | is the bug fixed | browser-bug (qa-tester) |
+| can a new user figure this out, UX test, is it easy to use | naive-user (with persona-library, user-goals, friction-trends) |
+| is the wording clear, check the error messages | copy-and-error-review |
+| does it work with a keyboard, is it accessible | accessibility-lens |
+| does it work on a phone | mobile-user |
 | compare this procedure across environments | db-access |
 | stage, commit, push, commit for A and B | checkin-merge |
 | make a Q&A for this module | module-qa |
@@ -135,6 +142,8 @@ Then name it in the profile under User simulation.
 - Anything that crosses a module boundary or alters shared objects is raised with the user first.
 
 ## 9. Maintenance
+
+- Run `python validate_pack.py` after editing any skill or agent. CI runs it on every push.
 
 - Keep the profile current: when ports, environments or branch names change, edit the profile only.
 - Review `known-issues.md` and the business rules register as part of normal work; they are only useful if they are kept up to date.

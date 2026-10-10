@@ -7,32 +7,30 @@ A portable pack of Claude agent **skills** and **agents** that work on any codeb
 ```
 pack/.claude/
   project-profile.md        the one file you fill in per project
-  skills/                   13 skills (one folder each, SKILL.md inside)
+  skills/                   22 skills (one folder each, SKILL.md inside)
   agents/                   master, software-engineer, bug-hunter, qa-tester, naive-user
 docs/
   INSTRUCTIONS.md           install, set up, adapt, troubleshoot
-  SKILLS.md                 overview of the 13 skills
+  SKILLS.md                 overview of the 22 skills
   AGENTS.md                 overview of the 5 agents
 install_skills.py           copies the pack into a project
+validate_pack.py            checks the pack's structure and cross-references
 ```
 
-## Skills
+## Skills (22)
 
-| Skill | Purpose |
+| Group | Skills |
 |---|---|
-| `mockup-analyzer` | Analyse a mockup or screenshot before building |
-| `known-issues` | Knowledge base of recurring bugs and proven fixes |
-| `feature-enhancer` | Plan and build features without breaking behavior |
-| `bug-finder` | Evidence-based root-cause analysis and fix |
-| `business-rules` | Register of confirmed rules that must not change silently |
-| `checkin-merge` | Stage, commit, push, cherry-pick by convention |
-| `test-on-dev` | Bring up a fresh local stack |
-| `browser-qa` | Run a handover test document in a real browser |
-| `browser-dev` | Check a new feature against its requirements |
-| `browser-bug` | Check whether a bug is fixed |
-| `db-access` | Safe database navigation across environments |
-| `module-qa` | Verified Q&A per module |
-| `work-log` | Timestamped log of each task and the skills used |
+| Build and fix | `mockup-analyzer`, `feature-enhancer`, `bug-finder`, `known-issues`, `business-rules`, `db-access`, `checkin-merge` |
+| Test | `test-on-dev`, `browser-setup`, `browser-qa`, `browser-dev`, `browser-bug` |
+| Usability | `persona-library`, `user-goals`, `first-impression-test`, `ux-heuristics`, `copy-and-error-review`, `accessibility-lens`, `mobile-user`, `friction-trends` |
+| Knowledge | `module-qa`, `work-log` |
+
+Details of each are in [`docs/SKILLS.md`](docs/SKILLS.md).
+
+## Agents (5)
+
+`master` (orchestrator), `software-engineer`, `bug-hunter`, `qa-tester`, and `naive-user`, a deliberately clueless first-time user that finds out whether the product can be used without help. See [`docs/AGENTS.md`](docs/AGENTS.md).
 
 ## Quick start
 

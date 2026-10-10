@@ -8,6 +8,7 @@ Existing files are never overwritten unless --force is given. Also appends the g
 the skills need. Nothing is executed and no network is used.
 """
 import argparse
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -66,6 +67,17 @@ def main() -> int:
                 f.write("\n")
             f.write("\n# Portable skills: local-only files\n" + "\n".join(missing) + "\n")
         print(f"updated .gitignore (+{len(missing)} lines)")
+
+    # Warn about skills the installed files mention but that are not installed.
+    available = {p.name for p in (source / "skills").iterdir() if p.is_dir()}
+    installed = {p.name for p in (target / ".claude" / "skills").glob("*") if p.is_dir()}
+    mentioned = set()
+    for md in list((target / ".claude" / "skills").rglob("*.md")) + list((target / ".claude" / "agents").glob("*.md")):
+        mentioned |= set(re.findall(r"`([a-z][a-z0-9-]+)`", md.read_text(encoding="utf-8")))
+    missing = sorted((mentioned & available) - installed)
+    if missing:
+        print("note: installed files mention skills that are not installed: " + ", ".join(missing))
+        print("      add them with --only, or ignore if you do not use those features")
 
     print(f"done: {written} written, {skipped} skipped")
     print("next: fill in .claude/project-profile.md, then copy the example files (see docs/INSTRUCTIONS.md)")

@@ -17,37 +17,15 @@ The user hands over a test document. Run it in a real browser against the dev co
 ## 1. Read the handover
 Get the document (a path, pasted text or a link). Extract and show back in a few lines: the feature and the branch or build it should run on; the environment, accounts or roles and test data; each case (id, preconditions, steps, expected result); what is out of scope. The document should follow `HANDOVER_TEMPLATE.md` in this folder.
 
-Login accounts are in `.claude/skills/browser-qa/accounts.local.json` (git-ignored; format below). Read it at run time, pass values through environment variables, never print or copy them. Ask only for what is missing: another role, test data, which branch is checked out, whether real outbound messages (email, SMS, chat channels) may be sent.
+Login accounts are in `.claude/skills/browser-qa/accounts.local.json` (git-ignored; format in `browser-setup`). Read it at run time, pass values through environment variables, never print or copy them. Ask only for what is missing: another role, test data, which branch is checked out, whether real outbound messages (email, SMS, chat channels) may be sent.
 
 Do not start until the document is clear enough to run.
 
 ## 2. Bring up the stack fresh
 Apply `test-on-dev`. Confirm the checked-out branch matches the handover and that the stack runs the current code, not an old build. Use the development environment only; never a shared or production one unless the user says so in this request.
 
-## 3. Set up the browser tooling (outside the repository)
-Keep everything in a temporary or scratch folder, never in the repo:
-
-```
-<scratch>/qa/                          package.json, node_modules, run scripts
-<scratch>/qa/results/<date-time>/      screenshots, traces, report.md
-```
-
-- Install once: `npm init -y` then `npm i playwright` (pin a version). Run `npx playwright install chromium` if launching fails for a missing browser; fall back to an installed Chrome with `channel: 'chrome'`.
-- Launch **headed** so the user can watch, with a small `slowMo` (about 150 ms); headless only if asked.
-- One fresh browser context per user, `ignoreHTTPSErrors: true` for self-signed development certificates, a 1440x900 viewport.
-- Write a Node script with one function per case, so one failure does not stop the rest.
-- Per case record: console errors, uncaught page errors, API responses with status 400 or above (method, URL, status), a screenshot at the end and at each meaningful step.
-
-`accounts.local.json` format:
-
-```json
-{
-  "environment": "local dev",
-  "accounts": [
-    { "role": "<role name>", "username": "<user>", "password": "<password>", "extraLoginFields": { "<field>": "<value>" } }
-  ]
-}
-```
+## 3. Set up the browser tooling
+Apply `browser-setup` (scratch folder outside the repository, Playwright, headed browser, evidence capture, accounts file). Write a Node script with one function per case so one failure does not stop the rest. Per case record console errors, uncaught page errors, API responses with status 400 or above and a screenshot at each meaningful step.
 
 ## 4. Run the cases
 For each case, in the document's order:

@@ -6,6 +6,7 @@ The single place where this project's specifics live. Every skill reads this fil
 - **Name:** <project name>
 - **Stack:** <for example: Vue 3 + ASP.NET Core 8 + SQL Server + Redis>
 - **Repo layout:** <where the backend, frontend, database scripts and docs live>
+- **Intended purpose in one sentence** (for UX tests; never shown to naive-user before its first look): <what the product is for and who uses it>
 
 ## Branches and commits
 - **Protected branches (never push unless named in the request):** <main, release/*, ...>
@@ -60,6 +61,8 @@ Kill only processes belonging to this project.
 - **Module Q&A:** `docs/module-qa/`
 - **Work logs:** `.claude/logs/` (git-ignored)
 - **Handover documents:** `docs/handover/` (or wherever the team keeps them)
+- **Personas:** `docs/personas.md`
+- **UX history:** `docs/ux-history/`
 
 ## User simulation (optional)
 If the system has users that arrive through channels you cannot log into (chat widget, messaging apps, email), note here how tests can simulate them (a skill name, a script, a webhook), and which ids are safe fake ids.
