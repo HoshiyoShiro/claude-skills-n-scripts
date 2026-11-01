@@ -1,6 +1,6 @@
 # Portable Skills Pack
 
-Twenty-two reusable agent skills, written to work on any codebase. Everything that is specific to one system (environments, ports, branch names, commit tags, database rules, accounts) lives in one file, the **project profile**, which every skill reads. Fill it in once per project; the skills need no other edits.
+Twenty-three reusable agent skills, written to work on any codebase. Everything that is specific to one system (environments, ports, branch names, commit tags, database rules, accounts) lives in one file, the **project profile**, which every skill reads. Fill it in once per project; the skills need no other edits.
 
 How to install and adapt the pack: see `INSTRUCTIONS.md`. The files themselves live in `../pack/.claude/`.
 
@@ -15,6 +15,7 @@ How to install and adapt the pack: see `INSTRUCTIONS.md`. The files themselves l
 | `business-rules` | Register of confirmed rules that must not change silently |
 | `db-access` | Safe database navigation across environments (+ helper script and example config) |
 | `checkin-merge` | Stage, commit, push, cherry-pick by convention |
+| `vibecode-practices` | Binding standards for the Supabase, Render, Vercel, Clerk and Stripe stack: database and security rules, pre-merge self-check (+ reference checklists) |
 
 ## Test
 

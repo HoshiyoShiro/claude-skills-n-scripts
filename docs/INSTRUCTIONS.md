@@ -7,7 +7,7 @@ How to reuse the skills pack and agents pack in another project, or on another m
 | Path | What it is |
 |---|---|
 | `pack/.claude/project-profile.md` | The one file you fill in per project |
-| `pack/.claude/skills/` | 22 skills, grouped in `SKILLS.md`: build and fix, test (including the shared `browser-setup`), usability (persona-library, user-goals, first-impression-test, ux-heuristics, copy-and-error-review, accessibility-lens, mobile-user, friction-trends), knowledge (module-qa, work-log) |
+| `pack/.claude/skills/` | 23 skills, grouped in `SKILLS.md`: build and fix, test (including the shared `browser-setup`), usability (persona-library, user-goals, first-impression-test, ux-heuristics, copy-and-error-review, accessibility-lens, mobile-user, friction-trends), knowledge (module-qa, work-log) |
 | `pack/.claude/agents/` | 5 agents: master (orchestrator), software-engineer, bug-hunter, qa-tester, naive-user |
 | `install_skills.py` | Copies the pack into a project folder (Python 3, no dependencies); warns about skills that are mentioned but not installed |
 | `validate_pack.py` | Checks frontmatter, agent skill lists and skill references before you release a change |
