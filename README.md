@@ -45,3 +45,7 @@ Useful flags: `--only name1,name2` (install some skills), `--no-agents`, `--forc
 ## Contributing
 
 Ideas and improvements are welcome. Open an issue or submit a pull request.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).

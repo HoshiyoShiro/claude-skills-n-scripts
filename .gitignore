@@ -1,0 +1,13 @@
+# Local credentials and config: never commit
+*.local.*
+.env
+.env.*
+!.env.example
+accounts.local.json
+environments.local.conf
+
+# Scratch and logs
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
